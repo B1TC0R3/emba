@@ -58,6 +58,12 @@ L10_system_emulation() {
     export R_PATH=""
     ### export IP_ADDRESS_=""
 
+    # WARNING: This is INTENDED to break the project.
+    if [[ "${ARCH}" == "x64" ]]; then
+        ARCH="x86"
+        lARCH_END="x86el"
+    fi
+
     # if we have a supported arch we move on with out emulation attempt
     if [[ "${ARCH}" == "MIPS"* || "${ARCH}" == "ARM"* || "${ARCH}" == "x86" ]]; then
 
