@@ -940,6 +940,32 @@ main() {
   fi
 
   #######################################################################################
+  # Experimental Mode (E-modules)
+  #######################################################################################
+  if [[ "${EXPERIMENTAL_MODE}" -eq 1 ]]; then
+    print_output "\n=================================================================\n" "no_log"
+
+    if [[ -d "${LOG_DIR}" ]]; then
+      print_output "[!] $(print_date) - Experimental mode started on ""$(print_date)""\\n""$(indent "${NC}""Firmware path: ""${FIRMWARE_PATH}")" "main"
+    else
+      print_output "[!] $(print_date) - Experimental mode started on ""$(print_date)""\\n""$(indent "${NC}""Firmware path: ""${FIRMWARE_PATH}")" "no_log"
+    fi
+
+    write_notification "Experimental mode started"
+    write_grep_log "$(print_date)" "TIMESTAMP"
+    run_modules "E" "0" "0"
+    print_ln "no_log"
+
+    if [[ -d "${LOG_DIR}" ]]; then
+      print_output "[!] $(print_date) - Experimental mode ended on ""$(print_date)"" and took about ""$(show_runtime)"" \\n" "main"
+    else
+      print_output "[!] $(print_date) - Experimental mode ended on ""$(print_date)"" and took about ""$(show_runtime)"" \\n" "no_log"
+    fi
+
+    write_notification "Experiment mode ended"
+  fi
+
+  #######################################################################################
   # Reporting (F-modules)
   #######################################################################################
   if [[ -d "${LOG_DIR}" ]]; then
