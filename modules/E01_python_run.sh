@@ -25,7 +25,7 @@ E01_python_run() {
         print_output "[*] ${lPYTHON_SCRIPT_COUNT} Python scripts queued for execution."
 
         for SCRIPT in "${PYTHON_SCRIPTS[@]}"; do
-            print_output "[*] Running ${SCRIPT}."
+            print_output "[*] Next in queue: ${SCRIPT}."
             run_python_script "${SCRIPT}"
         done
     else
@@ -37,5 +37,14 @@ E01_python_run() {
 
 run_python_script() {
     local lFILENAME="${1}.py"
-    print_output "[!] Simulated execution of file: ${lFILENAME}"
+    local lSCRIPT_DIR="./modules/E01_python_run"
+    local lPYTHON_BIN=""
+
+    lPYTHON_BIN="$( find . -name python3 | head -n 1 )"
+    if [[ ${lPYTHON_BIN} =~ "/python3" ]]; then
+        print_output "[!] Executing: ${lPYTHON_BIN} ${lSCRIPT_DIR}/${lFILENAME}"
+        ${lPYTHON_BIN} "${lSCRIPT_DIR}/${lFILENAME}"
+    else
+        print_output "[-] Unable to locate binary file 'python3'. Aborting"
+    fi
 }
