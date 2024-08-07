@@ -17,7 +17,8 @@ from sys import argv
 
 
 def main():
-    print(f"[*] Python script '{argv[0]}' executed successfully.")
+    print("+++ BEGIN PYTHON OUTPUT +++")
+    print(f"[*] Process '{argv[0]}' started.")
 
     if len(argv) > 1:
         for arg in argv[1:]:
@@ -26,7 +27,8 @@ def main():
     else:
         print(f"[*] No arguments received.")
 
-    print("[*] Empty python ")
+    print("[*] Process '{argv[0]}' finished.")
+    print("++++ END PYTHON OUTPUT ++++")
 
 
 main()

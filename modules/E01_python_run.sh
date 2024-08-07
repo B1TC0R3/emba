@@ -42,5 +42,6 @@ E01_python_run() {
         print_output "[-] Unable to locate binary file 'python3'. Aborting"
     fi
 
+    sub_module_title "Final results for ${FUNCNAME[0]}"
     module_end_log "${FUNCNAME[0]}" "${#COUNT_FINDINGS[@]}"
 }
