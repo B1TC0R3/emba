@@ -26,7 +26,7 @@ E01_python_run() {
     lPYTHON_BIN="$( find . -name python3 | head -n 1 )"
     if [[ ${lPYTHON_BIN} =~ "/python3" ]]; then
         if [[ ${lPYTHON_SCRIPT_COUNT} -gt 0 ]]; then
-            print_output "[*] ${lPYTHON_SCRIPT_COUNT} Python scripts queued for execution."
+            print_output "[*] ${lPYTHON_SCRIPT_COUNT} Python script/s queued for execution."
 
             for lSCRIPT in "${PYTHON_SCRIPTS[@]}"; do
                 sub_module_title "${lSCRIPT}"

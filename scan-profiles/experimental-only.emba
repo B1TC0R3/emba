@@ -18,7 +18,6 @@ export SELECT_MODULES+=( "E01" )
 export PYTHON_SCRIPTS=( "example_script" )
 export MODULE_BLACKLIST+=( "S02_UEFI_FwHunt", "S03_firmware_bin_base_analyzer", "S05_firmware_details", "S06_distribution_identification", "S09_firmware_base_version_check", "S100_command_inj_check", "S106_deep_key_search", "S107_deep_password_search", "S108_stacs_password_search", "S109_jtr_local_pw_cracking", "S10_binaries_basic_check", "S110_yara_check", "S116_qemu_version_detection", "S118_busybox_verifier", "S12_binary_protection", "S17_cwe_checker", "S18_capa_checker", "S19_apk_check", "S20_shell_check", "S21_python_check", "S23_lua_check", "S27_perl_check", "S35_http_file_check", "S40_weak_perm_check", "S45_pass_file_check", "S55_history_file_check", "S60_cert_file_check", "S65_config_file_check", "S75_network_check", "S80_cronjob_check", "S85_ssh_check", "S90_mail_check", "S95_interesting_files_check", "S99_grepit" )
 
-print_output "$(indent "$(orange "Disable EMBA module via profile")")" "no_log"
 for MODULE_ in "${MODULE_BLACKLIST[@]}"; do
   print_output "$(indent "$(orange "Blacklisted module: $MODULE_")")" "no_log"
 done
