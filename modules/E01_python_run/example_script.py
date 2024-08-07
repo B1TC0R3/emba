@@ -17,7 +17,7 @@ from sys import argv
 
 
 def main():
-    print("[*] Python script '{argv[0]}' executed successfully.")
+    print(f"[*] Python script '{argv[0]}' executed successfully.")
 
     if len(argv) > 1:
         for arg in argv[1:]:

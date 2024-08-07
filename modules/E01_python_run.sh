@@ -19,32 +19,28 @@ E01_python_run() {
     module_title "Python Runner"
     pre_module_reporter "${FUNCNAME[0]}"
 
-    local lPYTHON_SCRIPT_COUNT=${#PYTHON_SCRIPTS[@]}
-
-    if [[ ${lPYTHON_SCRIPT_COUNT} -gt 0 ]]; then
-        print_output "[*] ${lPYTHON_SCRIPT_COUNT} Python scripts queued for execution."
-
-        for SCRIPT in "${PYTHON_SCRIPTS[@]}"; do
-            print_output "[*] Next in queue: ${SCRIPT}."
-            run_python_script "${SCRIPT}"
-        done
-    else
-        print_output "[*] No Python scripts queued for execution."
-    fi
-
-    module_end_log "${FUNCNAME[0]}" "${#COUNT_FINDINGS[@]}"
-}
-
-run_python_script() {
-    local lFILENAME="${1}.py"
     local lSCRIPT_DIR="./modules/E01_python_run"
+    local lPYTHON_SCRIPT_COUNT=${#PYTHON_SCRIPTS[@]}
     local lPYTHON_BIN=""
 
     lPYTHON_BIN="$( find . -name python3 | head -n 1 )"
     if [[ ${lPYTHON_BIN} =~ "/python3" ]]; then
-        print_output "[!] Executing: ${lPYTHON_BIN} ${lSCRIPT_DIR}/${lFILENAME}"
-        ${lPYTHON_BIN} "${lSCRIPT_DIR}/${lFILENAME}"
+        if [[ ${lPYTHON_SCRIPT_COUNT} -gt 0 ]]; then
+            print_output "[*] ${lPYTHON_SCRIPT_COUNT} Python scripts queued for execution."
+
+            for lSCRIPT in "${PYTHON_SCRIPTS[@]}"; do
+                sub_module_title "${lSCRIPT}"
+                print_output "[*] Executing: ${lPYTHON_BIN} ${lSCRIPT_DIR}/${lSCRIPT}.py"
+                ${lPYTHON_BIN} "${lSCRIPT_DIR}/${lSCRIPT}.py"
+            done
+
+        else
+            print_output "[*] No Python scripts queued for execution."
+        fi
+
     else
         print_output "[-] Unable to locate binary file 'python3'. Aborting"
     fi
+
+    module_end_log "${FUNCNAME[0]}" "${#COUNT_FINDINGS[@]}"
 }
