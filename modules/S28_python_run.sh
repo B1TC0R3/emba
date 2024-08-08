@@ -14,7 +14,7 @@
 # Description:  This is an experimental EMBA module. It is designed to run user-defined python
 #               scripts during the analysis.
 
-E01_python_run() {
+S28_python_run() {
     module_log_init "${FUNCNAME[0]}"
     module_title "Python Runner"
     pre_module_reporter "${FUNCNAME[0]}"
