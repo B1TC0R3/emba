@@ -44,10 +44,10 @@ def setup():
     log(f"[*] Process '{argv[0]}' started.")
     example_script({"argv": argv})
 
+    log(f"[*] Process '{filename}' finished.")
+
     if LOGFILE:
         LOGFILE.close()
-
-    log(f"[*] Process '{filename}' finished.")
 
 
 setup()
