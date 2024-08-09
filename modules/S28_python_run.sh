@@ -19,7 +19,7 @@ S28_python_run() {
     module_title "Python Runner"
     pre_module_reporter "${FUNCNAME[0]}"
 
-    local lSCRIPT_DIR="./modules/E01_python_run"
+    local lSCRIPT_DIR="./modules/S28_python_run"
     local lPYTHON_SCRIPT_COUNT=${#PYTHON_SCRIPTS[@]}
     local lPYTHON_BIN=""
 
